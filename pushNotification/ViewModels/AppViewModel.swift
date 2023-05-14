@@ -18,8 +18,13 @@ class AppViewModel: ObservableObject {
     
     @Published var products: [Product] = []
     @Published var product: Product?
+    @Published var users: [User] = []
+    @Published var user: User?
     @Published var tabSelected: Tab = .product
     @Published var productSelected: Int?
+    @Published var userSelected: Int?
+    @Published var showUserDetail: Bool = false
+    
     let baseURL = "https://fakestoreapi.com"
     
     func getProducts() {
@@ -61,8 +66,41 @@ class AppViewModel: ObservableObject {
     }
     
     func getUsers() {
+        guard let url = URL(string: "\(baseURL)/users") else { return }
         
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { [weak self] data, _, error in
+            guard let data = data, error == nil else { return }
+            
+            do {
+                let result = try JSONDecoder().decode([User].self, from: data)
+                DispatchQueue.main.async {
+                    self?.users = result
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
     }
+    
+    func getUserDetail(id: Int) {
+        guard let url = URL(string: "\(baseURL)/users/\(id)") else { return }
+        
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { [weak self] data, _, error in
+            guard let data = data, error == nil else { return }
+            
+            do {
+                let result = try JSONDecoder().decode(User.self, from: data)
+                DispatchQueue.main.async {
+                    self?.user = result
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
+
     
     func checkDeepLink(url: URL) {
         guard let host = URLComponents(url: url, resolvingAgainstBaseURL: true)?.host else {
@@ -75,6 +113,9 @@ class AppViewModel: ObservableObject {
             let id = host.replacingOccurrences(of: "product=", with: "")
             productSelected = Int(id)
         } else if host.contains(Tab.user.rawValue) {
+            let id = host.replacingOccurrences(of: "user=", with: "")
+            showUserDetail = true
+            userSelected = Int(id)
             tabSelected = .user
         } else if host.contains(Tab.setting.rawValue) {
             tabSelected = .setting

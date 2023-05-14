@@ -20,7 +20,8 @@ struct ContentView: View {
                     Text("Products")
                 }
             
-            Text("Users")
+            UserView()
+                .environmentObject(vm)
                 .tag(Tab.user)
                 .tabItem {
                     Image(systemName: "person")
