@@ -28,7 +28,8 @@ struct ContentView: View {
                     Text("Users")
                 }
             
-            Text("Setting")
+            SettingView()
+                .environmentObject(vm)
                 .tag(Tab.setting)
                 .tabItem {
                     Image(systemName: "gear")

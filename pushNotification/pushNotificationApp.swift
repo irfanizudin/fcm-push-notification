@@ -22,6 +22,9 @@ struct pushNotificationApp: App {
                 .onOpenURL { url in
                     vm.checkDeepLink(url: url)
                 }
+                .onAppear {
+                    appDelegate.app = self
+                }
         }
     }
 }
@@ -29,7 +32,7 @@ struct pushNotificationApp: App {
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
-    let gcmMessageIDKey = "gcm.message_id"
+    var app: pushNotificationApp?
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -53,12 +56,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any]) async
     -> UIBackgroundFetchResult {
         
-        if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
-        }
-        
-        print(userInfo)
-        
         return UIBackgroundFetchResult.newData
     }
     
@@ -80,22 +77,31 @@ extension AppDelegate: MessagingDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     // Receive displayed notifications for iOS 10 devices.
-    // handle foreground push notifications
+    // receive foreground push notifications
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification) async
     -> UNNotificationPresentationOptions {
-        let userInfo = notification.request.content.userInfo
         
-        print(userInfo)
+        print("Foreground push")
         
         return [[.banner, .badge, .sound]]
     }
     
-    // handle background push notifications
+    // handle tap push notifications
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse) async {
         let userInfo = response.notification.request.content.userInfo
         
-        print(userInfo)
+        print("Background push")
+        print(userInfo["link"] as Any)
+        guard let urlString = userInfo["link"] as? String,
+            let url = URL(string: urlString)
+        else { return }
+        
+        print(url)
+        app?.vm.checkDeepLink(url: url)
+        
+        
+        
     }
 }

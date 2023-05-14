@@ -24,6 +24,7 @@ class AppViewModel: ObservableObject {
     @Published var productSelected: Int?
     @Published var userSelected: Int?
     @Published var showUserDetail: Bool = false
+    @Published var showNotifSetting: Bool = false
     
     let baseURL = "https://fakestoreapi.com"
     
@@ -111,14 +112,19 @@ class AppViewModel: ObservableObject {
         if host.contains(Tab.product.rawValue) {
             tabSelected = .product
             let id = host.replacingOccurrences(of: "product=", with: "")
+            print(id)
             productSelected = Int(id)
         } else if host.contains(Tab.user.rawValue) {
+            tabSelected = .user
             let id = host.replacingOccurrences(of: "user=", with: "")
             showUserDetail = true
             userSelected = Int(id)
-            tabSelected = .user
         } else if host.contains(Tab.setting.rawValue) {
             tabSelected = .setting
+            let id = host.replacingOccurrences(of: "setting=", with: "")
+            if id == "notif" {
+                showNotifSetting = true
+            }
         }
         
     }

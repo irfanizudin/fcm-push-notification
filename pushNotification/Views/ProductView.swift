@@ -34,11 +34,6 @@ struct ProductView: View {
                 vm.getProducts()
             }
             .navigationTitle("Products")
-            .toolbar {
-                Button("goto detail") {
-                    vm.productSelected = 19
-                }
-            }
         }
         
     }
