@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E1390DC2A48599E008FDBBC /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1390DB2A48599E008FDBBC /* APIKey.swift */; };
+		2E1390DF2A485F70008FDBBC /* notif_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2E1390DE2A485F70008FDBBC /* notif_sound.mp3 */; };
 		2E4703BC2A11291300518079 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4703BB2A11291300518079 /* User.swift */; };
 		2E4703BE2A112A9800518079 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4703BD2A112A9800518079 /* UserView.swift */; };
 		2E64D9932A11319A00DFAD9E /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64D9922A11319A00DFAD9E /* UserDetail.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		2E1390DB2A48599E008FDBBC /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		2E1390DE2A485F70008FDBBC /* notif_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = notif_sound.mp3; sourceTree = "<group>"; };
 		2E4703BB2A11291300518079 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2E4703BD2A112A9800518079 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		2E64D9922A11319A00DFAD9E /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 				2E1390DB2A48599E008FDBBC /* APIKey.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		2E1390DD2A485F46008FDBBC /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				2E1390DE2A485F70008FDBBC /* notif_sound.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		2EAFFC8E2A0915C900A15581 /* Views */ = {
@@ -127,6 +137,7 @@
 				2ED5E44E29FF8D97002DCC41 /* Info.plist */,
 				2ED5E44D29FF8D7D002DCC41 /* pushNotification.entitlements */,
 				2E1390DA2A485980008FDBBC /* API */,
+				2E1390DD2A485F46008FDBBC /* Sounds */,
 				2EAFFC932A09182600A15581 /* Models */,
 				2EAFFC8E2A0915C900A15581 /* Views */,
 				2EAFFC902A09162E00A15581 /* ViewModels */,
@@ -220,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2ED5E44029FE2FD7002DCC41 /* Preview Assets.xcassets in Resources */,
+				2E1390DF2A485F70008FDBBC /* notif_sound.mp3 in Resources */,
 				2ED5E43D29FE2FD7002DCC41 /* Assets.xcassets in Resources */,
 				2ED5E44C29FE3653002DCC41 /* GoogleService-Info.plist in Resources */,
 			);

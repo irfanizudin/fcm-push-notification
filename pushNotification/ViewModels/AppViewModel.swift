@@ -138,7 +138,8 @@ class AppViewModel: ObservableObject {
             "to": APIKey.deviceToken,
             "notification": [
                 "title": "Storepedia 🚀",
-                "body": "New Incoming Product !!!"
+                "body": "New Incoming Product !!!",
+                "sound": "notif_sound.mp3"
             ],
             "data": [
                 "link": "app://product=3"
