@@ -11,6 +11,7 @@ struct ProductView: View {
     @EnvironmentObject var vm: AppViewModel
     let gridLayout = Array(repeating: GridItem(.flexible(), spacing: 15), count: 2)
     @State var selected: Int?
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -34,6 +35,17 @@ struct ProductView: View {
                 vm.getProducts()
             }
             .navigationTitle("Products")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        vm.sendPushNotification()
+                        print("send push notif")
+                    } label: {
+                        Text("Send Notif")
+                    }
+
+                }
+            }
         }
         
     }

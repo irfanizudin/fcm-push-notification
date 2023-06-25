@@ -128,5 +128,47 @@ class AppViewModel: ObservableObject {
         }
         
     }
+    
+    func sendPushNotification() {
+        guard let url = URL(string: "https://fcm.googleapis.com/fcm/send") else { return }
+
+        let apiKey = APIKey.FCMAPIKey
+
+        let notification: [String: Any] = [
+            "to": APIKey.deviceToken,
+            "notification": [
+                "title": "Storepedia 🚀",
+                "body": "New Incoming Product !!!"
+            ],
+            "data": [
+                "link": "app://product=3"
+            ]
+        ]
+        
+        let jsonData = try! JSONSerialization.data(withJSONObject: notification, options: [])
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("key=\(apiKey)", forHTTPHeaderField: "Authorization")
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error sending FCM notification: \(error.localizedDescription)")
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode == 200 {
+                    print("FCM notification sent successfully.")
+                } else {
+                    print("Failed to send FCM notification. Status code: \(response.statusCode)")
+                }
+            }
+        }
+        
+        task.resume()
+    }
 }
 

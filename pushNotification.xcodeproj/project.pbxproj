@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E1390DC2A48599E008FDBBC /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1390DB2A48599E008FDBBC /* APIKey.swift */; };
 		2E4703BC2A11291300518079 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4703BB2A11291300518079 /* User.swift */; };
 		2E4703BE2A112A9800518079 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4703BD2A112A9800518079 /* UserView.swift */; };
 		2E64D9932A11319A00DFAD9E /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E64D9922A11319A00DFAD9E /* UserDetail.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E1390DB2A48599E008FDBBC /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		2E4703BB2A11291300518079 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2E4703BD2A112A9800518079 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		2E64D9922A11319A00DFAD9E /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E1390DA2A485980008FDBBC /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2E1390DB2A48599E008FDBBC /* APIKey.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		2EAFFC8E2A0915C900A15581 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 				2ED5E44B29FE3653002DCC41 /* GoogleService-Info.plist */,
 				2ED5E44E29FF8D97002DCC41 /* Info.plist */,
 				2ED5E44D29FF8D7D002DCC41 /* pushNotification.entitlements */,
+				2E1390DA2A485980008FDBBC /* API */,
 				2EAFFC932A09182600A15581 /* Models */,
 				2EAFFC8E2A0915C900A15581 /* Views */,
 				2EAFFC902A09162E00A15581 /* ViewModels */,
@@ -231,6 +242,7 @@
 				2EAFFC922A09165E00A15581 /* AppViewModel.swift in Sources */,
 				2E4703BE2A112A9800518079 /* UserView.swift in Sources */,
 				2EAFFC8D2A08B61000A15581 /* ProductView.swift in Sources */,
+				2E1390DC2A48599E008FDBBC /* APIKey.swift in Sources */,
 				2E64D9952A1137DE00DFAD9E /* SettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
